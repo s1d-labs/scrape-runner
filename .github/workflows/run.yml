@@ -1,6 +1,6 @@
 name: scrape-runner
 
-# Do not edit. scrape.s1d.me starts this workflow when it has work; the code it runs lives in s1d-labs/scrapers, so updates
+# Do not edit. scrape.s1d.me starts this workflow when it has work; the code it runs lives in s1d-labs/runner (and the family repo s1d-labs/<family>), so updates
 # arrive without changing this file.
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ on:
         description: "Worker processes per runner"
         default: "2"
       ref:
-        description: "Version of s1d-labs/scrapers to run"
+        description: "Version of s1d-labs/runner to run"
         default: "main"
       family:
         description: "Scraper family"
@@ -30,7 +30,7 @@ permissions:
 
 jobs:
   run:
-    uses: s1d-labs/scrapers/.github/workflows/runner.yml@main
+    uses: s1d-labs/runner/.github/workflows/runner.yml@main
     with:
       jobs: ${{ fromJSON(inputs.jobs) }}
       procs: ${{ fromJSON(inputs.procs) }}
