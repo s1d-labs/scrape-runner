@@ -15,8 +15,8 @@ on:
         description: "Version of s1d-labs/runner to run"
         default: "main"
       family:
-        description: "Scraper family"
-        default: "gepnic"
+        description: "Scraper family (its code is the repo s1d-labs/<family>)"
+        default: ""
       hub:
         description: "scrape-hub URL"
         default: "https://scrape.s1d.me"
