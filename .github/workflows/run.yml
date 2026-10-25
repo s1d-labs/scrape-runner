@@ -1,0 +1,40 @@
+name: scrape-runner
+
+# Do not edit. scrape.s1d.me starts this workflow when it has work; the code it runs lives in s1d-labs/scrapers, so updates
+# arrive without changing this file.
+on:
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: "Runners (1-256)"
+        default: "1"
+      procs:
+        description: "Worker processes per runner"
+        default: "2"
+      ref:
+        description: "Version of s1d-labs/scrapers to run"
+        default: "main"
+      family:
+        description: "Scraper family"
+        default: "gepnic"
+      hub:
+        description: "scrape-hub URL"
+        default: "https://scrape.s1d.me"
+      max_hours:
+        description: "Hours each worker keeps taking work"
+        default: "5.5"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  run:
+    uses: s1d-labs/scrapers/.github/workflows/runner.yml@main
+    with:
+      jobs: ${{ fromJSON(inputs.jobs) }}
+      procs: ${{ fromJSON(inputs.procs) }}
+      ref: ${{ inputs.ref }}
+      family: ${{ inputs.family }}
+      hub: ${{ inputs.hub }}
+      max_hours: ${{ fromJSON(inputs.max_hours) }}
