@@ -25,7 +25,7 @@ workflow. The hub starts it when there is scraping to do; the runs fetch public 
 Nothing you need to do. The hub starts runs in your repository when it has work (you will see them under the **Actions**
 tab) and decides how many runners to use. You never press anything.
 
-The workflow file here only points at `s1d-labs/scrapers`, where the scraper code lives, so code updates arrive by themselves.
+The workflow file here only points at `s1d-labs/runner` (which runs each family's code from `s1d-labs/<family>`), so code updates arrive by themselves.
 Do not edit `.github/workflows/run.yml`.
 
 The token can only start and read Actions runs in this one repository; it cannot read your code or touch anything else. To
